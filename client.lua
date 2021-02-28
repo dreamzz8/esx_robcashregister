@@ -35,9 +35,9 @@ end)
 function OpenCashregister()
   exports['mythic_progbar']:Progress({
       name = "cash_Register_opening",
-      duration = 10000,
+      duration = 10000, -- YOU CAN CHANGE THE TIME YOU WANT TO OPEN THE CASH REGISTER
       label = 'Opening the cash register...',
-      useWhileDead = true,
+      useWhileDead = false,
       canCancel = true,
       controlDisables = {
           disableMovement = true,
@@ -104,9 +104,9 @@ end
 function startRobbing ()
   exports['mythic_progbar']:Progress({
       name = "unique_action_name",
-      duration = 150000,
+      duration = 150000, -- YOU CAN CHANGE THE TIME YOU WANT TO THEY TAKE TO STEAL
       label = 'Stealing the cash from the cash register...',
-      useWhileDead = true,
+      useWhileDead = false,
       canCancel = true,
       controlDisables = {
           disableMovement = true,
@@ -123,7 +123,7 @@ function startRobbing ()
       if not cancelled then
           TriggerServerEvent('esx_robcashregister:givemoney')
       else
-          --nada
+          --nothing
       end
   end)
 end
