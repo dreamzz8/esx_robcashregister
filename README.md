@@ -7,6 +7,11 @@ ROB CASH REGISTER [ESX]
 This is an improved version of the Diogo_Castr0 script [akc_AssaltoLoja](https://forum.cfx.re/t/release-akc-assaltoloja-esx/1309505) that serves to rob cash registers.
 To rob you need to open the cash register first with a crowbar (WEAPON_CROWBAR) to be able to steal money from the box
 
+## Dependencies
+[Mythic_progbar](https://github.com/JayMontana36/mythic_notify)
+[Mythic_notify](https://github.com/HalCroves/mythic_progbar)
+[Interact-sound](https://github.com/plunkettscott/interact-sound)
+
 ## Features
 - You can add as many cash registers as you like, you just need to put coordinates in the config.lua
 - Easy to modify
