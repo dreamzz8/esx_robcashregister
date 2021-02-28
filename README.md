@@ -23,5 +23,5 @@ To rob you need to open the cash register first with a crowbar (WEAPON_CROWBAR) 
 - ensure esx_robcashregister in your server.cfg
 
 ## Preview
-
+- [Preview here](https://streamable.com/opap08)
 
