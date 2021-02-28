@@ -66,7 +66,7 @@ RegisterNetEvent('esx_robcashregister:startstealcash')
 AddEventHandler('esx_robcashregister:startstealcash', function()
   if onplace then
     ESX.TriggerServerCallback('esx_robcashregister:countpolice', function(countPolice)
-      if countPolice >=1 then
+      if countPolice >=1 then -- CHANGE THE 1 FOR THE COPS YOU WANT
         OpenCashregister()
         Citizen.Wait(9999)
         exports['mythic_notify']:SendAlert('inform', 'Cash register opened')
