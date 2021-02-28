@@ -1,29 +1,22 @@
-Based on onlyserenity script (https://github.com/onlyserenity/new_banking)
-New UI and some improvments
+## Support Discord
+dreamzz#2871
 
----
+ROB CASH REGISTER [ESX]
 
-FXServer NEW_BANKING
+## esx_robcashregister
+This is an improved version of the Diogo_Castr0 script (akc_AssaltoLoja) that serves to rob cash registers.
+To rob you need to open the cash register first with a crowbar (WEAPON_CROWBAR) to be able to steal money from the box
 
-[REQUIREMENTS]
+## Features
+- You can add as many cash registers as you like, you just need to put coordinates in the config.lua
+- Easy to modify
+- To change the amount of money you want, just change it on server.lua
+- Optimized script
 
-Dependencies For Full Functionality
+## Using esx_robcashregister
+- Copy the "esx_robcashregister" into your scripts folder
+- ensure esx_robcashregister in your server.cfg
 
-es_extended => https://github.com/ESX-Org/es_extended
+## Preview
 
-Install To resources/[esx]/new_banking << MUST BE INSTALLED HERE
 
-Add this in your server.cfg :
-start new_banking
-
-Credits: Script Created By: @onlyserenity(amjedcha) edited and improved by NewWay
-
-Discord: https://discord.gg/dSYb4j2
-
----
-
-![](https://i.imgur.com/bjfLLr9.png)
-![](https://i.imgur.com/JnlPAHN.png)
-![](https://i.imgur.com/OU5B0yo.png)
-![](https://i.imgur.com/t9axH2n.png)
-![](https://i.imgur.com/MH7MdKA.png)
