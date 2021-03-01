@@ -78,23 +78,23 @@ AddEventHandler('esx_robcashregister:startstealcash', function()
   end
 end)
 
-
 Citizen.CreateThread(function()
     while true do
         Wait(0)
-		local coords = GetEntityCoords(GetPlayerPed(-1))
-		for k,v in pairs(Config.Zone) do
-		if (GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) < 1.0) then
-        if (GetDistanceBetweenCoords(coords, v.x, v.y, v.z, true) < 1.0) then
-        onplace = true
-        coords = v
-      else
-        onplace = false
-        coords = {}
+        local coords = GetEntityCoords(PlayerPedId())
+        for k, v in pairs(Config.Zone) do
+            local location = vec3(v.x, v.y, v.z)
+            if #(GetEntityCoords(PlayerPedId()) - location) <= 2.0 then
+                if #(GetEntityCoords(PlayerPedId()) - location) <= 1.0 then
+                    onplace = true
+                    coords = v
+                else
+                    onplace = false
+                    coords = {}
+                end
+            end
+        end
     end
-  end
-  end
-end
 end)
 
 function countpolice ()
@@ -123,7 +123,7 @@ function startRobbing ()
       if not cancelled then
           TriggerServerEvent('esx_robcashregister:givemoney')
       else
-          --nothing
+          TriggerServerEvent("esx_robcashregister:cancelled")
       end
   end)
 end
