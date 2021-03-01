@@ -69,10 +69,10 @@ AddEventHandler('esx_robcashregister:startstealcash', function()
       if countPolice >=1 then -- CHANGE THE 1 FOR THE COPS YOU WANT
         OpenCashregister()
         Citizen.Wait(9999)
-        exports['mythic_notify']:SendAlert('inform', 'Cash register opened')
+        exports['mythic_notify']:DoHudText('inform', 'Cash register opened')
         TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 30.0, 'alarm', 0.3) -- IF YOU WANT TO USE ALARM SOUND CHANGE THE SOUND OF "ALARM" TO YOUR FILE NAME
       else
-        exports['mythic_notify']:SendAlert('error', 'No cops')
+        exports['mythic_notify']:DoHudText('error', 'No cops')
       end
     end)
   end
