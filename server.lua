@@ -42,7 +42,6 @@ AddEventHandler('esx_robcashregister:givemoney', function()
 	local money = math.random(1500, 2500)
 	if isrobbing[source] then
 		xPlayer.addMoney(money)
-		--TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Recebes-te  '..money..'€', length = 2500, style = { ['background-color'] = '#000000', ['color'] = '#ffffff' } })
 		TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
 		isrobbing[source] = nil
 	else
