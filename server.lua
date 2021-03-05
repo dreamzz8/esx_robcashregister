@@ -64,3 +64,29 @@ AddEventHandler("esx_robcashregister:cancelled", function()
         isrobbing[source] = nil
     end
 end)
+
+RegisterServerEvent('robberyNotif')
+AddEventHandler('robberyNotif', function()
+end)
+
+RegisterServerEvent('robberyNotif')
+AddEventHandler('robberyNotif', function(street1, street2, sex)
+	local _source = source
+	local xPlayers = ESX.GetPlayers()
+	for i=1, #xPlayers, 1 do
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+		if xPlayer.job.name == 'police' then
+			-- ADD NOTIFICATION MESSAGE HERE
+		end
+    end
+end)
+
+RegisterServerEvent('robberyPosition')
+AddEventHandler('robberyPosition', function(gx, gy, gz)
+	TriggerClientEvent('robberyBlip', -1, gx, gy, gz)
+end)
+
+RegisterServerEvent('robberyOnGoing')
+AddEventHandler('robberyOnGoing', function(gx, gy, gz)
+	TriggerClientEvent('robberyBlip', -1, gx, gy, gz)
+end)
