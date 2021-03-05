@@ -90,7 +90,7 @@ AddEventHandler('robberyNotif', function(street1, street2, sex)
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
 		if xPlayer.job.name == 'police' then
-			-- ADD NOTIFICATION MESSAGE HERE
+			TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'A robbery was started at ' .. street1 .. '!', style = { ['background-color'] = '###', ['color'] = '#FFFFFF' } })
 		end
     end
 end)
