@@ -17,6 +17,7 @@ To rob you need to open the cash register first with a crowbar (WEAPON_CROWBAR) 
 - Easy to modify
 - To change the amount of money you want, just change it on server.lua
 - Optimized script
+- Add your own police notification message in server.lua where it's commented out. 
 
 ## Using esx_robcashregister
 - Copy the "esx_robcashregister" into your scripts folder
