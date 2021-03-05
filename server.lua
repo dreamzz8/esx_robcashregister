@@ -12,7 +12,7 @@ ESX.RegisterServerCallback('esx_robcashregister:countpolice', function(source, c
     for i=1, #xPlayers, 1 do
         local Player = ESX.GetPlayerFromId(xPlayers[i])
         if Player.job.name == 'police' then
-           pcountPolice = pcountPolice + 3
+           pcountPolice = pcountPolice + 1
         end
     end
 
