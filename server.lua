@@ -41,17 +41,23 @@ AddEventHandler('esx_robcashregister:givemoney', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local money = math.random(1500, 2500)
 	if isrobbing[source] then
-		if Config.UseNormalMoney = true then
+		if Config.UseBlackMoney = false and Config.UseNormalMoney = true then
 			xPlayer.addMoney(money)
 			TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
 			isrobbing[source] = nil
 		else
-			if Config.UseBlackMoney = true then
+			if Config.UseNormalMoney = false and Config.UseBlackMoney = true then
 				xPlayer.addAccountMoney('black_money', money)
 				TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
 				isrobbing[source] = nil
 			else
-				print("Cheater: " .. GetPlayerName(source))
+				if Config.UseNormalMoney = false and Config.UseBlackMoney = false then
+					xPlayer.addAccountMoney('black_money', money)
+					TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
+					isrobbing[source] = nil
+				else
+					print("Cheater: " .. GetPlayerName(source))
+				end
 			end
 		end
 	end
