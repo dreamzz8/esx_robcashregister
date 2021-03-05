@@ -12,7 +12,7 @@ ESX.RegisterServerCallback('esx_robcashregister:countpolice', function(source, c
     for i=1, #xPlayers, 1 do
         local Player = ESX.GetPlayerFromId(xPlayers[i])
         if Player.job.name == 'police' then
-           pcountPolice = pcountPolice + 3
+           pcountPolice = pcountPolice + 1
         end
     end
 
@@ -41,11 +41,25 @@ AddEventHandler('esx_robcashregister:givemoney', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local money = math.random(1500, 2500)
 	if isrobbing[source] then
-		xPlayer.addMoney(money)
-		TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
-		isrobbing[source] = nil
-	else
-		print("Cheater: " .. GetPlayerName(source))
+		if Config.UseBlackMoney = false and Config.UseNormalMoney = true then
+			xPlayer.addMoney(money)
+			TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
+			isrobbing[source] = nil
+		else
+			if Config.UseNormalMoney = false and Config.UseBlackMoney = true then
+				xPlayer.addAccountMoney('black_money', money)
+				TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
+				isrobbing[source] = nil
+			else
+				if Config.UseNormalMoney = false and Config.UseBlackMoney = false then
+					xPlayer.addAccountMoney('black_money', money)
+					TriggerClientEvent('mythic_notify:client:SendAlert', source , { type = 'inform', text = 'You steal  $' ..money })
+					isrobbing[source] = nil
+				else
+					print("Cheater: " .. GetPlayerName(source))
+				end
+			end
+		end
 	end
 end)
 
@@ -63,4 +77,30 @@ AddEventHandler("esx_robcashregister:cancelled", function()
     if isrobbing[source] then
         isrobbing[source] = nil
     end
+end)
+
+RegisterServerEvent('robberyNotif')
+AddEventHandler('robberyNotif', function()
+end)
+
+RegisterServerEvent('robberyNotif')
+AddEventHandler('robberyNotif', function(street1, street2, sex)
+	local _source = source
+	local xPlayers = ESX.GetPlayers()
+	for i=1, #xPlayers, 1 do
+		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+		if xPlayer.job.name == 'police' then
+			TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'A robbery was started at ' .. street1 .. '!', style = { ['background-color'] = '###', ['color'] = '#FFFFFF' } })
+		end
+    end
+end)
+
+RegisterServerEvent('robberyPosition')
+AddEventHandler('robberyPosition', function(gx, gy, gz)
+	TriggerClientEvent('robberyBlip', -1, gx, gy, gz)
+end)
+
+RegisterServerEvent('robberyOnGoing')
+AddEventHandler('robberyOnGoing', function(gx, gy, gz)
+	TriggerClientEvent('robberyBlip', -1, gx, gy, gz)
 end)

@@ -15,6 +15,7 @@ local PlayerData                = {}
 local incollect                 = false
 local onplace                 = false
 local coords            = {}
+local blipTime = 25 --in seconds
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -70,6 +71,8 @@ AddEventHandler('esx_robcashregister:startstealcash', function()
         OpenCashregister()
         Citizen.Wait(9999)
         exports['mythic_notify']:DoHudText('inform', 'Cash register opened')
+        TriggerServerEvent('robberyNotif', street1)
+        TriggerServerEvent('robberyOnGoing', plyPos.x, plyPos.y, plyPos.z)
         TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 30.0, 'alarm', 0.3) -- IF YOU WANT TO USE ALARM SOUND CHANGE THE SOUND OF "ALARM" TO YOUR FILE NAME
       else
         exports['mythic_notify']:DoHudText('error', 'No cops')
@@ -128,3 +131,23 @@ function startRobbing ()
   end)
 end
 
+RegisterNetEvent('robberyBlip')
+AddEventHandler('robberyBlip', function(tx, ty, tz)
+	if PlayerData.job.name == 'police' then
+		local transT = 250
+		local Blip = AddBlipForCoord(tx, ty, tz)
+		SetBlipSprite(Blip,  10)
+		SetBlipColour(Blip,  1)
+		SetBlipAlpha(Blip,  transT)
+		SetBlipAsShortRange(Blip,  false)
+		while transT ~= 0 do
+			Wait(blipTime * 4)
+			transT = transT - 1
+			SetBlipAlpha(Blip,  transT)
+			if transT == 0 then
+				SetBlipSprite(Blip,  2)
+				return
+			end
+		end
+	end
+end)
