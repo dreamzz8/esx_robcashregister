@@ -10,6 +10,3 @@ Config.Zone = {
 	shop7 = {x = -706.06, y = -913.59, z = 19.22},
 	shop8 = {x = -706.07, y = -915.4, z = 19.22}
 }
-
-Config.UseNormalMoney = false
-Config.UseBlackMoney = true
